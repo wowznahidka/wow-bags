@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>WOW.ZNAHIDKA — Преміум кросівки без передоплати</title>
+
+<!-- ── Primary Meta ── -->
+<meta name="description" content="Преміум кросівки Nike, Adidas, New Balance, Jordan без передоплати. Оплата після примірки на Новій Пошті. Доставка по всій Україні.">
+<meta name="keywords"    content="кросівки, Nike, Adidas, New Balance, Jordan, купити кросівки, без передоплати, Нова Пошта">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots"      content="index, follow">
+
+<!-- ── Open Graph ── -->
+<meta property="og:type"        content="website">
+<meta property="og:title"       content="WOW.ZNAHIDKA — Преміум кросівки без передоплати">
+<meta property="og:description" content="Преміум кросівки Nike, Adidas, New Balance, Jordan без передоплати. Оплата після примірки на Новій Пошті. Доставка по всій Україні.">
+<meta property="og:locale"      content="uk_UA">
+<meta property="og:url"         content="https://wowznahidka.github.io/">
+<meta property="og:image"       content="https://wowznahidka.github.io/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height"content="630">
+
+<!-- ── Twitter Card ── -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="WOW.ZNAHIDKA — Преміум кросівки без передоплати">
+<meta name="twitter:description" content="Преміум кросівки Nike, Adidas, New Balance, Jordan без передоплати. Оплата після примірки на Новій Пошті. Доставка по всій Україні.">
+<meta name="twitter:image"       content="https://wowznahidka.github.io/og-cover.png">
+
+<!-- ── PWA / Apple ── -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon"                          href="icon-192.png">
+<meta name="apple-mobile-web-app-capable"             content="yes">
+<meta name="apple-mobile-web-app-status-bar-style"    content="black-translucent">
+<meta name="apple-mobile-web-app-title"               content="WOW.ZNAHIDKA">
+
+<!-- ── Structured Data ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "WOW.ZNAHIDKA",
+  "description": "Преміум кросівки без передоплати. Оплата після примірки на Новій Пошті.",
+  "sameAs": ["https://t.me/znahidkawow", "https://instagram.com/wow.znahidka"],
+  "priceRange": "₴₴",
+  "areaServed": "UA",
+  "paymentAccepted": "Cash",
+  "currenciesAccepted": "UAH"
+}
+</script>
+
+<!-- ── Analytics: set GA_ID + FB_PIXEL_ID in js/config.js ── -->
+
+<!-- ── Preconnect ── -->
+<link rel="preconnect" href="https://script.google.com" crossorigin>
+<link rel="dns-prefetch" href="https://script.google.com">
+
+<!-- ── CSS MODULES ── -->
+<!-- base.css is render-critical — stays synchronous -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/cards.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+
+<div id="app-root">
+
+<!-- ════════════════════════════════════════════════
+     HEADER
+     ════════════════════════════════════════════════ -->
+<header id="header" role="banner">
+  <div class="header-logo" aria-label="WOW.ZNAHIDKA">
+    WOW<span class="dot">.</span>ZNAHIDKA
+    <small id="hdr-sub">ПРЕМІУМ КРОСІВКИ</small>
+  </div>
+  <div class="header-actions" role="toolbar" aria-label="Дії">
+    <button class="hdr-btn hdr-lang" onclick="toggleLang()" id="lang-btn" aria-label="Змінити мову">UA</button>
+    <button class="hdr-btn" onclick="openSheet('sheet-fav')" aria-label="Улюблені">
+      <span aria-hidden="true">❤️</span>
+      <span class="badge hidden" id="fav-badge" aria-live="polite">0</span>
+    </button>
+    <button class="hdr-btn" onclick="openSheet('sheet-cart')" aria-label="Кошик">
+      <span aria-hidden="true">🛒</span>
+      <span class="badge hidden" id="cart-badge" aria-live="polite">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════
+     PAGES
+     ════════════════════════════════════════════════ -->
+<main id="pages">
+
+  <!-- ── HOME ── -->
+  <section id="page-home" class="page active" aria-labelledby="home-title">
+    <div class="home-hero">
+      <div class="home-greeting" id="home-greeting">Привіт! 👋</div>
+      <h1 class="home-title" id="home-title">Твої ідеальні<br>кросівки тут 🔥</h1>
+      <div class="home-counter-chip" aria-live="polite">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span id="models-counter">0</span> моделей в наявності
+      </div>
+    </div>
+
+    <!-- Daily Deals -->
+    <section id="daily-deals-section" hidden>
+      <div class="dd-header">
+        <div class="dd-title-wrap">
+          <span class="dd-fire" aria-hidden="true">🔥</span>
+          <h2 class="dd-title">Знахідка дня</h2>
+        </div>
+        <div class="dd-timer-wrap" aria-label="Оновлення через">
+          <span class="dd-timer-lbl">До оновлення:</span>
+          <time class="dd-timer" aria-live="off">00:00:00</time>
+        </div>
+      </div>
+      <div class="dd-row" role="list" aria-label="Знахідка дня"></div>
+    </section>
+
+    <div id="recently-viewed-section" class="hidden">
+      <div class="section">
+        <div class="sec-head"><h2 class="sec-title">👀 Нещодавно переглянуті</h2></div>
+      </div>
+      <div class="h-scroll" id="recently-viewed-row" role="list" aria-label="Нещодавно переглянуті"></div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head">
+        <h2 class="sec-title">🔥 Популярне зараз</h2>
+        <button class="sec-link" onclick="changeTab('catalog')">Всі</button>
+      </div>
+    </div>
+    <div class="h-scroll" id="popular-row" role="list" aria-label="Популярні товари">
+      <div class="loading-wrap"><div class="spinner" aria-label="Завантаження"></div></div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head">
+        <h2 class="sec-title">✨ Новинки</h2>
+        <button class="sec-link" onclick="changeTab('catalog')">Всі</button>
+      </div>
+    </div>
+    <div class="h-scroll" id="new-row" role="list" aria-label="Новинки"></div>
+
+    <div class="section">
+      <div class="sec-head"><h2 class="sec-title">👟 Бренди</h2></div>
+      <div class="brands-grid" id="home-brands-grid" role="list" aria-label="Бренди"></div>
+    </div>
+
+    <div class="section" style="padding-bottom:0">
+      <div class="sec-head"><h2 class="sec-title">💬 Що кажуть покупці</h2></div>
+    </div>
+    <div class="h-scroll" id="reviews-row" role="list" aria-label="Відгуки покупців"></div>
+    <button class="add-review-btn" onclick="openSheet('sheet-review')" aria-label="Залишити відгук">
+      <span aria-hidden="true">✍️</span>
+      <span>Залишити відгук</span>
+      <span class="i-arr" style="margin-left:auto;color:var(--text-muted)" aria-hidden="true"></span>
+    </button>
+
+    <div class="section">
+      <div class="sec-head"><h2 class="sec-title">📦 Весь асортимент</h2></div>
+      <div class="prods-grid" id="home-all-grid" role="list" aria-label="Всі товари">
+        <div class="loading-wrap" style="grid-column:1/-1"><div class="spinner" aria-label="Завантаження"></div></div>
+      </div>
+    </div>
+    <div style="height:16px"></div>
+    <div id="home-nudge-sentinel" style="height:1px;display:none" aria-hidden="true"></div>
+  </section>
+
+  <!-- ── MATCH ── -->
+  <section id="page-match" class="page" aria-label="Match">
+    <div class="match-top">
+      <h1 class="match-page-title">🔥 Match</h1>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="m-combo" id="match-combo" style="display:none" aria-live="polite"></div>
+        <div class="match-counter-badge" id="match-counter" aria-live="polite">0 / 0</div>
+      </div>
+    </div>
+    <p class="match-hint">Свайп вправо — ❤️ в Улюблені · вліво — пропустити</p>
+    <div class="card-stage" id="card-stage" role="region" aria-label="Картка товару">
+      <div class="loading-wrap"><div class="spinner" aria-label="Завантаження"></div></div>
+    </div>
+    <div class="match-actions" role="group" aria-label="Дії">
+      <button class="m-action m-nope" onclick="swipeCard('left')"  aria-label="Пропустити">✕</button>
+      <button class="m-action m-like" onclick="swipeCard('right')" aria-label="Лайк">❤️</button>
+    </div>
+  </section>
+
+  <!-- ── CATALOG ── -->
+  <section id="page-catalog" class="page" aria-label="Каталог">
+    <div class="cat-search-wrap" role="search">
+      <div class="cat-search-inner">
+        <span class="cat-search-ico" aria-hidden="true">🔍</span>
+        <input type="text" class="cat-search" id="cat-search"
+          placeholder="Пошук по бренду або моделі…"
+          oninput="onSearchInput(this.value)"
+          autocomplete="off" autocorrect="off" spellcheck="false"
+          aria-label="Пошук товарів">
+        <button class="cat-search-clear" id="cat-search-clear" onclick="clearSearch()" aria-label="Очистити">✕</button>
+      </div>
+    </div>
+    <div class="search-sugg" id="search-sugg"></div>
+    <div class="size-filter-wrap" role="group" aria-label="Фільтр розміру">
+      <div class="size-filter-label" id="size-filter-label">Розмір</div>
+      <div class="size-chips-row" id="size-chips-row" role="list" aria-labelledby="size-filter-label"></div>
+    </div>
+    <div id="price-filter-wrap" role="group" aria-label="Ціновий діапазон"></div>
+    <div class="update-ts" id="update-ts" aria-live="polite">🔄 Оновлення…</div>
+    <div id="catalog-view">
+      <div class="loading-wrap"><div class="spinner" aria-label="Завантаження"></div></div>
+    </div>
+  </section>
+
+  <!-- ── CONTACTS ── -->
+  <section id="page-contacts" class="page" aria-label="Контакти">
+    <div class="contacts-banner">
+      <div class="contacts-banner-ico" aria-hidden="true">👟</div>
+      <h1 class="contacts-banner-title">WOW.ZNAHIDKA</h1>
+      <p class="contacts-banner-sub">Преміум кросівки без передоплати.<br>Оплата після примірки на Новій Пошті.</p>
+    </div>
+
+    <!-- Social action buttons -->
+    <nav class="social-actions" aria-label="Соціальні мережі">
+      <a class="social-btn tg" href="https://t.me/znahidkawow" onclick="return openLink(this.href)" rel="noopener noreferrer" aria-label="Telegram">
+        <span class="social-btn-ico" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </span>
+        Telegram
+      </a>
+      <a class="social-btn ig" href="https://instagram.com/wow.znahidka" onclick="return openLink(this.href)" rel="noopener noreferrer" aria-label="Instagram">
+        <span class="social-btn-ico" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </span>
+        Instagram
+      </a>
+      <a class="social-btn tt" href="https://www.tiktok.com/@wowznahidka" onclick="return openLink(this.href)" rel="noopener noreferrer" aria-label="TikTok">
+        <span class="social-btn-ico" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </span>
+        TikTok
+      </a>
+    </nav>
+
+    <!-- Delivery info -->
+    <div class="contacts-list">
+      <div class="contact-item">
+        <div class="ci-ico">📦</div>
+        <div class="ci-body">
+          <div class="ci-title">Доставка по Україні</div>
+          <div class="ci-sub">Нова Пошта · 1–3 дні · ~50–80₴ · Оплата після примірки</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-ico">✈️</div>
+        <div class="ci-body">
+          <div class="ci-title">Міжнародна доставка</div>
+          <div class="ci-sub">Польща, Чехія, Словаччина та інші країни ЄС</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="ci-ico">↩️</div>
+        <div class="ci-body">
+          <div class="ci-title">Повернення безкоштовно</div>
+          <div class="ci-sub">Не підійшло — просто відмовся на відділенні, без витрат</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="faq-wrap" aria-label="FAQ">
+      <div id="faq-list"></div>
+    </section>
+    <div style="height:16px"></div>
+  </section>
+
+</main>
+
+<!-- ════════════════════════════════════════════════
+     BOTTOM NAV
+     ════════════════════════════════════════════════ -->
+<nav id="bottom-nav" aria-label="Навігація">
+  <button class="nav-item active" data-tab="home"     onclick="changeTab('home')">
+    <span class="nav-icon" aria-hidden="true">🏠</span>
+    <span class="nav-label">Головна</span>
+  </button>
+  <button class="nav-item" data-tab="match"    onclick="changeTab('match')">
+    <span class="nav-icon" aria-hidden="true">🔥</span>
+    <span class="nav-label">Match</span>
+  </button>
+  <button class="nav-item" data-tab="catalog"  onclick="changeTab('catalog')">
+    <span class="nav-icon" aria-hidden="true">👟</span>
+    <span class="nav-label">Каталог</span>
+  </button>
+  <button class="nav-item" data-tab="contacts" onclick="changeTab('contacts')">
+    <span class="nav-icon" aria-hidden="true">💬</span>
+    <span class="nav-label">Контакти</span>
+  </button>
+</nav>
+
+<!-- ════════════════════════════════════════════════
+     GENDER TOGGLE
+     ════════════════════════════════════════════════ -->
+<div id="gender-toggle" role="group" aria-label="Каталог" data-active="mixed">
+  <div class="gender-pill">
+    <div class="gender-slider" aria-hidden="true"></div>
+    <button class="g-btn" data-gender="male" onclick="setGender('male')" aria-pressed="false">
+      <span class="g-lbl">Чоловік</span>
+      <span class="g-cnt" id="g-cnt-male"></span>
+    </button>
+    <button class="g-btn" data-gender="female" onclick="setGender('female')" aria-pressed="false">
+      <span class="g-lbl">Жінка</span>
+      <span class="g-cnt" id="g-cnt-female"></span>
+    </button>
+    <button class="g-btn active" data-gender="mixed" onclick="setGender('mixed')" aria-pressed="true">
+      <span class="g-lbl">Всі</span>
+    </button>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeAllSheets()" aria-hidden="true"></div>
+
+<!-- ════════════════════════════════════════════════
+     SHEETS
+     ════════════════════════════════════════════════ -->
+
+<!-- Favorites -->
+<div class="sheet" id="sheet-fav" role="dialog" aria-modal="true" aria-label="Улюблені">
+  <div class="sh-handle" aria-hidden="true"></div>
+  <h2 class="sh-title">❤️ Улюблені</h2>
+  <div id="fav-list">
+    <div class="sh-empty">
+      <div class="sh-empty-ico" aria-hidden="true">🤍</div>
+      <p>Тут з'являться товари,<br>які ти лайкнув у Match</p>
+    </div>
+  </div>
+</div>
+
+<!-- Cart -->
+<div class="sheet" id="sheet-cart" role="dialog" aria-modal="true" aria-label="Кошик">
+  <div class="sh-handle" aria-hidden="true"></div>
+  <h2 class="sh-title">🛒 Кошик</h2>
+  <div id="cart-list">
+    <div class="sh-empty">
+      <div class="sh-empty-ico" aria-hidden="true">🛒</div>
+      <p>Кошик порожній.<br>Додай пари з Улюблених!</p>
+    </div>
+  </div>
+  <div id="cart-summary-block" class="hidden">
+    <div class="cart-summary">
+      <div class="cart-sum-row"><span>Товари</span><span id="cart-items-count">0 пар</span></div>
+      <div class="cart-sum-row"><span>Доставка</span><span>За тарифами НП</span></div>
+      <div class="cart-sum-total"><span>До сплати</span><span id="cart-total-price">0 ₴</span></div>
+    </div>
+    <button class="cart-checkout-btn" onclick="openCheckout()">Оформити замовлення <span class="i-arr-lg" aria-hidden="true"></span></button>
+  </div>
+</div>
+
+<!-- Size Picker -->
+<div class="sheet" id="sheet-size" role="dialog" aria-modal="true" aria-label="Вибір розміру">
+  <div class="sh-handle" aria-hidden="true"></div>
+  <h2 class="sh-title">Оберіть розмір</h2>
+  <div class="sp-product" id="sp-product-info" aria-live="polite"></div>
+  <div id="sp-my-size-bar-wrap"></div>
+  <div class="sp-sublabel">Доступні розміри</div>
+  <div class="sp-grid" id="sp-size-grid" role="group" aria-label="Розміри"></div>
+  <div id="sp-urgency"></div>
+  <div class="sp-actions">
+    <button class="sp-photo-btn" onclick="requestPhoto()">Запросити фото</button>
+    <button class="sp-confirm-btn" onclick="confirmSize()">Додати в кошик <span class="i-arr-lg" aria-hidden="true"></span></button>
+  </div>
+</div>
+
+<!-- Checkout -->
+<div class="sheet" id="sheet-checkout" role="dialog" aria-modal="true" aria-label="Оформлення замовлення">
+  <div class="sh-handle" aria-hidden="true"></div>
+  <h2 class="sh-title">📦 Оформлення</h2>
+  <div class="cod-banner" role="note">
+    <div class="cod-ico" aria-hidden="true">🤝</div>
+    <div>
+      <div class="cod-title">Оплата після примірки</div>
+      <div class="cod-sub">Без передоплати · Нова Пошта</div>
+    </div>
+  </div>
+
+  <div id="checkout-items-summary" aria-label="Товари у замовленні"></div>
+
+  <div class="form-field">
+    <label class="form-lbl" for="f-name"><span class="form-lbl-ico" aria-hidden="true">👤</span> Ваше ім'я</label>
+    <div class="form-inp-wrap">
+      <input type="text" class="form-inp" id="f-name" placeholder="Ім'я та прізвище"
+        oninput="validateField(this,'name')" autocomplete="name">
+      <span class="form-status-ico" id="f-name-ico" aria-hidden="true"></span>
+    </div>
+    <div class="form-err-msg" id="f-name-err" role="alert">Введіть ваше ім'я</div>
+  </div>
+
+  <div class="form-field">
+    <label class="form-lbl" for="f-phone"><span class="form-lbl-ico" aria-hidden="true">📞</span> Телефон</label>
+    <div class="form-inp-wrap">
+      <input type="tel" class="form-inp" id="f-phone" placeholder="+380 (XX) XXX-XX-XX"
+        oninput="formatPhone(this)" autocomplete="tel">
+      <span class="form-status-ico" id="f-phone-ico" aria-hidden="true"></span>
+    </div>
+    <div class="form-err-msg" id="f-phone-err" role="alert">Введіть повний номер телефону</div>
+  </div>
+
+  <div class="form-field">
+    <label class="form-lbl" for="f-city"><span class="form-lbl-ico" aria-hidden="true">🏙</span> Місто</label>
+    <div class="form-inp-wrap">
+      <input type="text" class="form-inp" id="f-city" placeholder="Наприклад: Київ"
+        oninput="validateField(this,'city')" autocomplete="address-level2">
+      <span class="form-status-ico" id="f-city-ico" aria-hidden="true"></span>
+    </div>
+    <div class="form-err-msg" id="f-city-err" role="alert">Введіть назву міста</div>
+  </div>
+
+  <div class="deliv-tabs" role="group" aria-label="Тип доставки">
+    <button class="deliv-tab on" id="dtab-dept" onclick="setDelivTab('dept')" aria-pressed="true">🏢 Відділення</button>
+    <button class="deliv-tab"    id="dtab-post" onclick="setDelivTab('post')" aria-pressed="false">📮 Поштомат</button>
+  </div>
+
+  <div class="form-field">
+    <label class="form-lbl" for="f-depot">
+      <span class="form-lbl-ico" aria-hidden="true">📦</span>
+      <span id="depot-label">Номер відділення</span>
+    </label>
+    <div class="form-inp-wrap">
+      <input type="text" class="form-inp" id="f-depot" placeholder="Наприклад: 12"
+        oninput="validateField(this,'depot')" inputmode="numeric">
+      <span class="form-status-ico" id="f-depot-ico" aria-hidden="true"></span>
+    </div>
+    <div class="form-err-msg" id="f-depot-err" role="alert">Введіть номер відділення або поштомату</div>
+  </div>
+
+  <div class="promo-row">
+    <input type="text" class="promo-inp" id="f-promo" placeholder="Промокод (якщо є)" autocomplete="off" aria-label="Промокод">
+    <button class="promo-apply" onclick="applyPromo()">Застосувати</button>
+  </div>
+
+  <button class="checkout-submit" id="checkout-submit-btn" onclick="submitOrder()">
+    ✅ Підтвердити замовлення
+  </button>
+  <div style="height:8px"></div>
+</div>
+
+<!-- Review Form -->
+<div class="sheet" id="sheet-review" role="dialog" aria-modal="true" aria-label="Відгук">
+  <div class="sh-handle" aria-hidden="true"></div>
+  <h2 class="sh-title">✍️ Залишити відгук</h2>
+  <div class="sp-sublabel" style="padding:0 20px 10px">Ваша оцінка</div>
+  <div class="star-row" id="star-row" role="group" aria-label="Оцінка">
+    <button class="star-pick" onclick="setStarRating(1)" aria-label="1 зірка">⭐</button>
+    <button class="star-pick" onclick="setStarRating(2)" aria-label="2 зірки">⭐</button>
+    <button class="star-pick" onclick="setStarRating(3)" aria-label="3 зірки">⭐</button>
+    <button class="star-pick" onclick="setStarRating(4)" aria-label="4 зірки">⭐</button>
+    <button class="star-pick" onclick="setStarRating(5)" aria-label="5 зірок">⭐</button>
+  </div>
+  <input type="text" class="rev-name-inp" id="rev-author-inp"
+    placeholder="Ваше ім'я та місто (напр. Аня, Київ)" autocomplete="name" aria-label="Ім'я">
+  <textarea class="rev-textarea" id="rev-text-inp"
+    placeholder="Розкажіть про ваш досвід замовлення…" aria-label="Текст відгуку"></textarea>
+  <button class="rev-submit-btn" onclick="submitReview()">Надіслати відгук</button>
+  <div style="height:8px"></div>
+</div>
+
+<!-- Product Detail -->
+<div class="sheet" id="sheet-product" role="dialog" aria-modal="true" aria-label="Деталі товару">
+  <div class="sh-handle" aria-hidden="true"></div>
+  <div id="product-detail-content"></div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     SUCCESS VIEW
+     ════════════════════════════════════════════════ -->
+<div id="view-success" role="dialog" aria-modal="true" aria-label="Замовлення прийнято">
+  <div class="success-ico" aria-hidden="true">🎉</div>
+  <h1 class="success-title">Замовлення прийнято!</h1>
+  <p class="success-sub">Ми зв'яжемося з вами найближчим часом. Слідкуйте за статусом у Telegram.</p>
+  <div class="success-order" id="success-order-info" aria-live="polite"></div>
+  <a class="success-tg-btn" href="https://t.me/znahidkawow" onclick="return openLink(this.href)" rel="noopener noreferrer">
+    ✈️ Telegram WOW.ZNAHIDKA
+  </a>
+  <button class="success-home-btn" onclick="goHome()"><span class="i-arr-back" aria-hidden="true"></span> На головну</button>
+  <button class="success-home-btn" style="background:var(--red);color:#fff;margin-top:-6px"
+    onclick="document.getElementById('view-success').classList.remove('on');changeTab('match')">
+    🔥 Свайпати ще <span class="i-arr-lg" aria-hidden="true"></span>
+  </button>
+</div>
+
+<!-- TOASTS -->
+<div id="toasts" role="status" aria-live="polite" aria-atomic="false"></div>
+
+<!-- ════════════════════════════════════════════════
+     PWA BANNERS
+     ════════════════════════════════════════════════ -->
+<div id="pwa-android" role="complementary" aria-label="Встановити додаток">
+  <button class="pwa-close" onclick="dismissPwa('android')" aria-label="Закрити">✕</button>
+  <div class="pwa-ico" aria-hidden="true">👟</div>
+  <div class="pwa-text">
+    <div class="pwa-title">WOW.ZNAHIDKA</div>
+    <div class="pwa-sub">Додай на головний екран</div>
+  </div>
+  <button class="pwa-install-btn" id="pwa-install-btn">Встановити</button>
+</div>
+
+<div id="pwa-ios" role="complementary" aria-label="Інструкція iOS">
+  <button style="position:absolute;top:10px;right:14px;background:none;font-size:18px;color:var(--text-muted);padding:0"
+    onclick="dismissPwa('ios')" aria-label="Закрити">✕</button>
+  <div class="pwa-ios-title">👟 Додай WOW.ZNAHIDKA</div>
+  <div class="pwa-ios-steps">
+    1. Натисни <strong>⬆️ Поділитись</strong> внизу Safari<br>
+    2. Обери <strong>«На початковий екран»</strong><br>
+    3. Натисни <strong>«Додати»</strong>
+  </div>
+  <button class="pwa-ios-ok" onclick="dismissPwa('ios')">Зрозуміло 👍</button>
+</div>
+
+<!-- STICKY CART BAR -->
+<div id="cart-sticky-bar" onclick="openSheet('sheet-cart')" role="button" tabindex="0"
+  aria-label="Кошик" onkeydown="if(event.key==='Enter')openSheet('sheet-cart')">
+  <div class="csb-left">
+    <span aria-hidden="true">🛒</span>
+    <span class="csb-badge" id="csb-count">0</span>
+    <span id="csb-label">пар у кошику</span>
+  </div>
+  <div class="csb-right">До кошика <span id="csb-total">0₴</span></div>
+</div>
+
+
+</div><!-- /app-root -->
+
+<!-- ════════════════════════════════════════════════
+     JS MODULES  (load order matters)
+     ════════════════════════════════════════════════ -->
+<script src="js/config.js"   defer></script>
+<script src="js/state.js"    defer></script>
+<script src="js/lang.js"     defer></script>
+<script src="js/api.js"      defer></script>
+<script src="js/products.js" defer></script>
+<script src="js/ui.js"       defer></script>
+<script src="js/match.js"    defer></script>
+<script src="js/filters.js"  defer></script>
+<script src="js/cart.js"     defer></script>
+<script src="js/modal.js"    defer></script>
+<script src="js/deals.js"    defer></script>
+<script src="js/app.js"      defer></script>
+
+</body>
+</html>
