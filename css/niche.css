@@ -1,0 +1,215 @@
+/* ============================================================
+   WOW.BAGS — NICHE THEME
+   Mood: Fashion Maison Editorial
+   Ref:  Farfetch · SSENSE · Net-a-Porter · Mytheresa
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Warm cream editorial palette — stays light */
+  --bg:        #faf8f4;
+  --bg2:       #f4f0e9;
+  --bg3:       #ece7dd;
+  --bg4:       #e3ddd2;
+  --bg5:       #d9d3c6;
+  --bg-glass:  rgba(250,248,244,0.95);
+  --bg-card:   #ffffff;
+
+  --text:       #1a1510;
+  --text-dim:   rgba(26,21,16,0.60);
+  --text-muted: rgba(26,21,16,0.35);
+
+  --accent:      #c9a84c;
+  --accent-inv:  #ffffff;
+  --red:         #c9a84c;
+  --red-dim:     rgba(201,168,76,0.10);
+  --red-glow:    rgba(201,168,76,0.22);
+  --orange:      #b8763a;
+  --green:       #5a8a5a;
+  --gold:        #c9a84c;
+
+  --border:        rgba(0,0,0,0.07);
+  --border-hover:  rgba(0,0,0,0.14);
+  --border-accent: rgba(201,168,76,0.22);
+
+  --shadow-sm:   0 1px 4px  rgba(0,0,0,0.07);
+  --shadow:      0 4px 20px rgba(0,0,0,0.10);
+  --shadow-lg:   0 8px 48px rgba(0,0,0,0.15);
+  --shadow-red:  0 6px 24px rgba(201,168,76,0.22);
+  --shadow-card: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-card-hover: 0 8px 40px rgba(0,0,0,0.14), 0 0 0 1px rgba(201,168,76,0.12);
+
+  --niche-font:      'Playfair Display', Georgia, serif;
+  --niche-font-body: 'Inter', -apple-system, sans-serif;
+  --grain-opacity: 0.022;
+}
+
+body {
+  background: var(--bg) !important;
+  font-family: var(--niche-font-body);
+}
+
+@media (min-width: 481px) {
+  body::before {
+    background:
+      radial-gradient(ellipse 55% 60% at 18% 30%, rgba(201,168,76,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 45% at 82% 80%, rgba(201,168,76,0.03) 0%, transparent 55%),
+      #f0ece3 !important;
+    background-color: #f0ece3 !important;
+  }
+  #app-root {
+    background: var(--bg) !important;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 32px 100px rgba(0,0,0,0.12) !important;
+  }
+}
+
+/* ── HERO ─────────────────────────────────────────────────── */
+.home-hero {
+  background: linear-gradient(165deg,
+    rgba(201,168,76,0.07) 0%,
+    rgba(201,168,76,0.02) 55%,
+    transparent 100%) !important;
+  padding: 28px 16px 22px !important;
+}
+.home-hero::before {
+  background: radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 68%) !important;
+}
+.home-hero::after {
+  background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 65%) !important;
+}
+
+.home-greeting {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 2.5px !important;
+  text-transform: uppercase !important;
+  color: var(--accent) !important;
+  opacity: 0.8 !important;
+}
+
+.home-title {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  font-size: clamp(28px, 8vw, 42px) !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.14 !important;
+  background: linear-gradient(135deg, #1a1510 30%, #c9a84c 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.home-counter-chip {
+  background: rgba(201,168,76,0.08) !important;
+  border-color: rgba(201,168,76,0.18) !important;
+}
+.live-dot { background: var(--accent) !important; }
+
+/* ── SECTION TITLES ───────────────────────────────────────── */
+.sec-title {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  font-size: 22px !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* ── HEADER/NAV ───────────────────────────────────────────── */
+#header {
+  background: rgba(250,248,244,0.96) !important;
+  border-bottom-color: rgba(0,0,0,0.07) !important;
+}
+.header-logo .dot { color: var(--accent) !important; }
+
+#bottom-nav {
+  background: rgba(250,248,244,0.96) !important;
+  border-top-color: rgba(0,0,0,0.07) !important;
+}
+.nav-item.active { color: var(--accent) !important; }
+.nav-item.active .nav-icon::after { background: var(--accent) !important; }
+
+/* ── CARDS ────────────────────────────────────────────────── */
+.product-card {
+  background: var(--bg-card) !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+}
+.product-card:hover {
+  box-shadow: var(--shadow-card-hover) !important;
+  border-color: rgba(201,168,76,0.14) !important;
+}
+.card-img-wrap { background: #faf7f0 !important; }
+.card-brand {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 10px !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+}
+.card-price {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+/* ── CHIPS ────────────────────────────────────────────────── */
+.niche-fam-chip {
+  background: rgba(0,0,0,0.04) !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+.niche-fam-chip.active {
+  background: rgba(201,168,76,0.12) !important;
+  border-color: rgba(201,168,76,0.30) !important;
+  color: var(--accent) !important;
+}
+
+/* ── CHECKOUT / CART ──────────────────────────────────────── */
+.cart-checkout-btn {
+  background: linear-gradient(135deg, #c9a84c, #a88030) !important;
+  color: #fff !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+}
+#cart-sticky-bar { background: linear-gradient(135deg, #c9a84c, #a88030) !important; color: #fff !important; }
+
+.cod-banner {
+  background: rgba(90,138,90,0.08) !important;
+  border-color: rgba(90,138,90,0.20) !important;
+  color: #5a8a5a !important;
+}
+
+/* ── SIZE/PRICE ───────────────────────────────────────────── */
+.size-chip.active  { background: var(--accent) !important; border-color: var(--accent) !important; color: #fff !important; }
+.range-track-fill  { background: var(--accent) !important; }
+.price-range-thumb { background: var(--accent) !important; }
+
+/* ── BADGES ───────────────────────────────────────────────── */
+.badge-hot  { background: #c9a84c !important; color: #fff !important; }
+.badge-new  { background: rgba(90,138,90,0.15) !important; color: #5a8a5a !important; }
+.badge-sale { background: rgba(184,118,58,0.15) !important; color: #b8763a !important; }
+
+/* ── SHEETS ───────────────────────────────────────────────── */
+.sheet { background: var(--bg) !important; border-top-color: rgba(0,0,0,0.07) !important; }
+
+/* ── INPUTS ───────────────────────────────────────────────── */
+.form-inp, .checkout-input {
+  background: var(--bg2) !important;
+  border-color: rgba(0,0,0,0.10) !important;
+}
+.form-inp:focus, .checkout-input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.14) !important;
+}
+
+/* ── SIZE BTN ─────────────────────────────────────────────── */
+.size-btn.active {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+/* ── MARQUEE ──────────────────────────────────────────────── */
+.wow-marquee-item { color: rgba(201,168,76,0.45) !important; }
